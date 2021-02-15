@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.util.Constants;
 
-@Mixin(BlackHoleTankBlock.TankCapabilityProvider.class)
+@Mixin(BlackHoleTankBlock.TankCapabilityProvider.class, remap = false)
 public abstract class MixinBlackHoleTankBlock {
     @Shadow public FluidHandlerItemStack fluidHandlerItemStack;
 

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.util.Constants;
 
-@Mixin(BlackHoleUnitBlock.StorageItemHandler.class)
+@Mixin(BlackHoleUnitBlock.StorageItemHandler.class, remap = false)
 public abstract class MixinBlackHoleUnitBlock {
     @Shadow private IItemHandler itemHandler;
 
