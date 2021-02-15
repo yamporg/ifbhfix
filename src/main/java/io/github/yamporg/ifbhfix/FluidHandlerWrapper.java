@@ -1,12 +1,11 @@
 package io.github.yamporg.ifbhfix;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class FluidHandlerWrapper extends FluidHandlerItemStack {
     public FluidHandlerWrapper(@Nonnull ItemStack container, int capacity) {
