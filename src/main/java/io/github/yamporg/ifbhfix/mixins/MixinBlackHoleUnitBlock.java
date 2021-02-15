@@ -9,13 +9,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "com.buuz135.industrial.tile.block.BlackHoleUnitBlock$StorageItemHandler$1", remap = false)
+@Mixin(
+        targets = "com.buuz135.industrial.tile.block.BlackHoleUnitBlock$StorageItemHandler$1",
+        remap = false)
 public abstract class MixinBlackHoleUnitBlock {
     @Shadow(aliases = "val$itemStack")
     private ItemStack itemStack;
 
     @Inject(method = "extractItem", at = @At("RETURN"))
-    public void onExtractItem(int slot, int amount, boolean simulate, CallbackInfoReturnable<ItemStack> cir) {
+    public void onExtractItem(
+            int slot, int amount, boolean simulate, CallbackInfoReturnable<ItemStack> cir) {
         if (simulate) {
             return;
         }
