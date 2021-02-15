@@ -8,5 +8,5 @@ package io.github.yamporg.ifbhfix;
 public class Mod {
     static final String MOD_ID = "ifbhfix";
     static final String NAME = "IFBHFix";
-    static final String VERSION = "0.0.1";
+    static final String VERSION = "0.0.2";
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'io.github.yamporg.ifbhfix'
-version '0.0.1'
+version '0.0.2'
 
 minecraft {
     mappings channel: 'stable', version: '39-1.12'
