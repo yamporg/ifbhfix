@@ -10,5 +10,5 @@ import net.minecraftforge.fml.common.Mod;
 public class Main {
     static final String MOD_ID = "ifbhfix";
     static final String NAME = "IFBHFix";
-    static final String VERSION = "0.0.2";
+    static final String VERSION = "0.0.3";
 }
