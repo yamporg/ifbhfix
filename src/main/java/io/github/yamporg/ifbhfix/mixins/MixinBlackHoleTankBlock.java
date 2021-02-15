@@ -1,26 +1,23 @@
 package io.github.yamporg.ifbhfix.mixins;
 
+import com.buuz135.industrial.tile.block.BlackHoleTankBlock;
+import io.github.yamporg.ifbhfix.FluidHandlerWrapper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.util.Constants;
 
-@Mixin(targets = "com.buuz135.industrial.tile.block.BlackHoleTankBlock$TankCapabilityProvider$1")
+@Mixin(BlackHoleTankBlock.TankCapabilityProvider.class)
 public abstract class MixinBlackHoleTankBlock {
-    @Shadow(aliases = "val$itemStack")
-    private ItemStack itemStack;
+    @Shadow
+    public FluidHandlerItemStack fluidHandlerItemStack;
 
-    @Inject(method = "setContainerToEmpty", at = @At("RETURN"))
-    public void onSetContainerToEmpty(CallbackInfo ci) {
-        if (!itemStack.hasTagCompound()) {
-            return;
-        }
-        NBTTagCompound nbt = itemStack.getTagCompound();
-        nbt.removeTag("FluidName"); // BlackHoleTankBlock.FLUID_NBT
-        nbt.removeTag("Amount");
-        nbt.removeTag("Tag");
+    @Inject(method = Constants.CTOR, at = @At("RETURN"))
+    public void init(BlackHoleTankBlock outer, ItemStack itemStack, CallbackInfo ci) {
+        this.fluidHandlerItemStack = new FluidHandlerWrapper(itemStack, Integer.MAX_VALUE);
     }
 }
