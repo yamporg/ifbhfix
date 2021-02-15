@@ -6,7 +6,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.Mixins;
 
-@IFMLLoadingPlugin.Name(Mod.MOD_ID)
+@IFMLLoadingPlugin.Name(Main.MOD_ID)
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class LoadingPlugin implements IFMLLoadingPlugin {
     public LoadingPlugin() {
