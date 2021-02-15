@@ -33,13 +33,15 @@ dependencies {
 
     // https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin/files/2785465
     // Filename Forgelin-1.8.4.jar
-    implementation fg.deobf('curse.maven:forgelin-248453:2785465')
+    implementation 'curse.maven:forgelin-248453:2785465'
+
     // https://www.curseforge.com/minecraft/mc-mods/tesla-core-lib/files/2891841
     // Filename tesla-core-lib-1.12.2-1.0.17.jar
-    implementation fg.deobf('curse.maven:teslacorelib-254602:2891841')
+    implementation 'curse.maven:teslacorelib-254602:2891841'
+
     // https://www.curseforge.com/minecraft/mc-mods/industrial-foregoing/files/2745321
     // Filename industrialforegoing-1.12.2-1.12.13-237.jar
-    implementation fg.deobf('curse.maven:industrialforegoing-266515:2745321')
+    implementation 'curse.maven:industrialforegoing-266515:2745321'
 }
 
 // Minecraft 1.12 requires both 2.9.4-nightly-20150209 and 2.9.2-nightly-20140822,
