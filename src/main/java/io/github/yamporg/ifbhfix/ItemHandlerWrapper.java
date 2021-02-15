@@ -1,11 +1,10 @@
 package io.github.yamporg.ifbhfix;
 
 import com.buuz135.industrial.tile.misc.BlackHoleUnitTile;
+import javax.annotation.Nonnull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.items.IItemHandler;
-
-import javax.annotation.Nonnull;
 
 public final class ItemHandlerWrapper implements IItemHandler {
     public ItemStack itemStack;
