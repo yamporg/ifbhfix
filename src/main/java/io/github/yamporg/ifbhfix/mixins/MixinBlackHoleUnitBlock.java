@@ -9,8 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(
-        targets = "com.buuz135.industrial.tile.block.BlackHoleUnitBlock$StorageItemHandler$1")
+@Mixin(targets = "com.buuz135.industrial.tile.block.BlackHoleUnitBlock$StorageItemHandler$1")
 public abstract class MixinBlackHoleUnitBlock {
     @Shadow(aliases = "val$itemStack")
     private ItemStack itemStack;
