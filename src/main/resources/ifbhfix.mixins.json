@@ -5,8 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinBlackHoleTankBlock",
-    "MixinBlackHoleTankBlock$MixinTankCapabilityProvider",
-    "MixinBlackHoleUnitBlock",
-    "MixinBlackHoleUnitBlock$MixinStorageItemHandler"
+    "MixinBlackHoleUnitBlock"
   ]
 }
