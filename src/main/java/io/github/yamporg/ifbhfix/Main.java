@@ -1,14 +1,12 @@
 package io.github.yamporg.ifbhfix;
 
-import net.minecraftforge.fml.common.Mod;
-
-@Mod(
+@net.minecraftforge.fml.common.Mod(
         modid = Main.MOD_ID,
         name = Main.NAME,
         version = Main.VERSION,
-        dependencies = "required-before:industrialforegoing")
+        dependencies = "required:industrialforegoing")
 public class Main {
     static final String MOD_ID = "ifbhfix";
     static final String NAME = "IFBHFix";
-    static final String VERSION = "0.0.4";
+    static final String VERSION = "0.0.5";
 }
