@@ -13,9 +13,13 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-            property 'fml.coreMods.load', 'io.github.yamporg.ifbhfix.LoadingPlugin'
+            properties(
+                'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP',
+                'forge.logging.console.level': 'debug',
+                'mixin.hotSwap': 'true',
+                'mixin.debug': 'true',
+                'mixin.env.disableRefMap': 'true',
+            )
         }
     }
 }
@@ -31,6 +35,13 @@ dependencies {
     implementation 'org.spongepowered:mixin:0.8.2'
     annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
 
+    // See https://github.com/SpongePowered/Mixin/issues/308
+    // See https://github.com/SpongePowered/Mixin/issues/460
+    //
+    // https://www.curseforge.com/minecraft/mc-mods/mixin-booter/files/3109196
+    // Filename mixinbooter-1.0.jar
+    implementation 'curse.maven:mixinbooter-419286:3109196'
+
     // https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin/files/2785465
     // Filename Forgelin-1.8.4.jar
     implementation 'curse.maven:forgelin-248453:2785465'
@@ -43,6 +54,8 @@ dependencies {
     // Filename industrialforegoing-1.12.2-1.12.13-237.jar
     implementation fg.deobf('curse.maven:industrialforegoing-266515:2745321')
 }
+
+// And here come the workarounds. A lot of them.
 
 // Minecraft 1.12 requires both 2.9.4-nightly-20150209 and 2.9.2-nightly-20140822,
 // and the latter does not exist. We fix that by using the newer version.
@@ -71,10 +84,16 @@ java {
 //
 // See https://github.com/MinecraftForge/ForgeGradle/issues/717
 // See also https://redd.it/e4hfzz
-sourceSets {
-   main {
-       output.resourcesDir = java.outputDir
-   }
+//
+// The current workaround comes from Chiseled Me mod.
+// See https://github.com/necauqua/chiseled-me/blob/f8b94ab08ff39c46c58120027de4361597a1a473/build.gradle#L30-L39
+afterEvaluate {
+    tasks.findByName('prepareRuns')?.doLast {
+        copy {
+            from 'build/resources/main'
+            into 'build/classes/java/main'
+        }
+    }
 }
 
 // Make archive builds reproducible.
@@ -99,9 +118,10 @@ tasks.withType(net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace) {
     tool = 'net.md-5:SpecialSource:1.8.6:shaded' 
 }
 
+// See https://github.com/necauqua/chiseled-me/blob/f8b94ab08ff39c46c58120027de4361597a1a473/build.gradle#L41-L45
 jar.manifest.attributes(
     'FMLCorePluginContainsFMLMod': true,
-    'FMLCorePlugin': 'io.github.yamporg.ifbhfix.LoadingPlugin',
+    'ForceLoadAsMod': true,
 )
 
 curseforge {
@@ -117,7 +137,7 @@ curseforge {
 
         mainArtifact(jar) {
             relations {
-                requiredDependency 'mixinbootstrap'
+                requiredDependency 'mixin-booter'
                 requiredDependency 'industrial-foregoing'
             }
         }
