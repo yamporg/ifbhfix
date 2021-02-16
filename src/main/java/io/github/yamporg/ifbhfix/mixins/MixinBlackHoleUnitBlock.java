@@ -16,7 +16,7 @@ import org.spongepowered.asm.util.Constants;
 @Mixin(BlackHoleUnitBlock.class)
 public abstract class MixinBlackHoleUnitBlock {
     @Mixin(value = BlackHoleUnitBlock.StorageItemHandler.class)
-    public static abstract class MixinStorageItemHandler {
+    public abstract static class MixinStorageItemHandler {
         @Mutable
         @Final
         @Shadow(remap = false)

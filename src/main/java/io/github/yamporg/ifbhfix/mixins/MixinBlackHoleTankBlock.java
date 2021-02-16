@@ -16,7 +16,7 @@ import org.spongepowered.asm.util.Constants;
 @Mixin(value = BlackHoleTankBlock.class)
 public abstract class MixinBlackHoleTankBlock {
     @Mixin(value = BlackHoleTankBlock.TankCapabilityProvider.class)
-    public static abstract class MixinTankCapabilityProvider {
+    public abstract static class MixinTankCapabilityProvider {
         @Mutable
         @Final
         @Shadow(remap = false)
