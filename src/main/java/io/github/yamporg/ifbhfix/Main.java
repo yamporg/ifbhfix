@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.Mod;
         modid = Main.MOD_ID,
         name = Main.NAME,
         version = Main.VERSION,
-        dependencies = "required:industrialforegoing")
+        dependencies = "required-before:industrialforegoing")
 public class Main {
     static final String MOD_ID = "ifbhfix";
     static final String NAME = "IFBHFix";
