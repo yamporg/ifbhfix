@@ -15,10 +15,7 @@ import org.spongepowered.asm.util.Constants;
 
 @Mixin(value = BlackHoleTankBlock.TankCapabilityProvider.class, remap = false)
 public abstract class MixinBlackHoleTankBlock {
-    @Mutable
-    @Final
-    @Shadow
-    public FluidHandlerItemStack fluidHandlerItemStack;
+    @Mutable @Final @Shadow public FluidHandlerItemStack fluidHandlerItemStack;
 
     @Inject(method = Constants.CTOR, at = @At("RETURN"))
     public void init(BlackHoleTankBlock outer, ItemStack itemStack, CallbackInfo ci) {
