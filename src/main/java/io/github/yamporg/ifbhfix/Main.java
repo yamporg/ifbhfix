@@ -19,7 +19,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class Main {
     static final String MOD_ID = "ifbhfix";
     static final String NAME = "IFBHFix";
-    static final String VERSION = "0.0.5";
+    static final String VERSION = "0.1.0";
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void overrideTankItem(RegistryEvent.Register<Item> event) {

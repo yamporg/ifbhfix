@@ -3,7 +3,7 @@
     "modid": "ifbhfix",
     "name": "IFBHFix",
     "description": "Fixes Industrial Foregoing Black Hole Controller inventory lock.",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "mcversion": "1.12.2",
     "url": "https://github.com/yamporg/ifbhfix",
     "updateUrl": "",
