@@ -1,6 +1,5 @@
 plugins {
     id 'net.minecraftforge.gradle' version '4.0.13'
-    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
@@ -9,10 +8,8 @@ version '0.0.5'
 
 minecraft {
     mappings channel: 'stable', version: '39-1.12'
-
     runs {
         client {
-            workingDirectory project.file('run')
             properties(
                 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP',
                 'forge.logging.console.level': 'debug',
@@ -25,22 +22,11 @@ minecraft {
 }
 
 repositories {
-    maven { url 'https://repo.spongepowered.org/maven' }
     maven { url 'https://cursemaven.com' }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2855'
-
-    implementation 'org.spongepowered:mixin:0.8.2'
-    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
-
-    // See https://github.com/SpongePowered/Mixin/issues/308
-    // See https://github.com/SpongePowered/Mixin/issues/460
-    //
-    // https://www.curseforge.com/minecraft/mc-mods/mixin-booter/files/3109196
-    // Filename mixinbooter-1.0.jar
-    implementation 'curse.maven:mixinbooter-419286:3109196'
 
     // https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin/files/2785465
     // Filename Forgelin-1.8.4.jar
@@ -118,12 +104,6 @@ tasks.withType(net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace) {
     tool = 'net.md-5:SpecialSource:1.8.6:shaded' 
 }
 
-// See https://github.com/necauqua/chiseled-me/blob/f8b94ab08ff39c46c58120027de4361597a1a473/build.gradle#L41-L45
-jar.manifest.attributes(
-    'FMLCorePluginContainsFMLMod': true,
-    'ForceLoadAsMod': true,
-)
-
 curseforge {
     if (project.hasProperty('curseForgeApiKey')) {
         apiKey = project.curseForgeApiKey
@@ -137,7 +117,6 @@ curseforge {
 
         mainArtifact(jar) {
             relations {
-                requiredDependency 'mixin-booter'
                 requiredDependency 'industrial-foregoing'
             }
         }

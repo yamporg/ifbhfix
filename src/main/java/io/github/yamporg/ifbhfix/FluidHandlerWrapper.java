@@ -8,8 +8,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 
 public class FluidHandlerWrapper extends FluidHandlerItemStack {
-    public FluidHandlerWrapper(@Nonnull ItemStack container, int capacity) {
-        super(container, capacity);
+    public FluidHandlerWrapper(@Nonnull ItemStack container) {
+        super(container, Integer.MAX_VALUE);
     }
 
     @Nullable
